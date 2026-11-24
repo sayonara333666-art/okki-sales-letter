@@ -1,0 +1,44 @@
+{
+  "dataDir": "",
+  "migrateLegacyData": true,
+  "customersFile": "客户页面.jsonl",
+  "workFile": "营销信填写.json",
+  "cacheFile": "营销信缓存.json",
+  "reportPrefix": "客户营销信_",
+  "analysisBatchSize": 8,
+  "autoAnalyze": {
+    "enabled": true,
+    "quietSeconds": 5,
+    "analyzeOnStart": false,
+    "maxBatchesPerRun": 0,
+    "maxCompaniesPerRun": 0,
+    "timeoutMinutes": 20,
+    "openReport": true
+  },
+  "claude": {
+    "command": "claude",
+    "model": "",
+    "permissionMode": "acceptEdits",
+    "extraArgs": []
+  },
+  "catalogImage": "产品目录.png",
+  "profile": {
+    "companyName": "Your Company Name",
+    "companyNameLocal": "你的公司全称",
+    "brand": "Your Brand",
+    "location": "Your City, Your Country",
+    "shippingPort": "Your Port",
+    "products": "your main products",
+    "certifications": "",
+    "contactName": "[Your Name]",
+    "contactTitle": "Sales Manager",
+    "phone": "+00 000 000 0000",
+    "email": "sales@example.com",
+    "website": "",
+    "intro": ""
+  },
+  "skipTags": [
+    "第一次发送营销信"
+  ],
+  "skipIfEdmSent": true
+}

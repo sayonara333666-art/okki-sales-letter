@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Customer Letter Assistant",
+  "short_name": "CLA",
+  "version": "1.3.1030",
+  "description": "Capture the current OKKI customer page and generate personalized marketing letters.",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1:8788/*",
+    "http://localhost:8788/*"
+  ],
+  "action": {
+    "default_title": "Customer Letter Assistant"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://crm.xiaoman.cn/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ]
+}
