@@ -62,7 +62,7 @@ claude --version
 
 1. **下载项目**
    ```bash
-   git clone https://github.com/sayonara333666/okki-sales-letter.git
+   git clone https://github.com/sayonara333666-art/okki-sales-letter.git
    ```
    或者点 GitHub 页面右上角 **Code → Download ZIP**，解压到任意目录。
 
