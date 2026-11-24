@@ -6,6 +6,8 @@ const os = require("os");
 
 const APP_DIR = __dirname;
 const CONFIG_FILE = path.join(APP_DIR, "config.json");
+// 可选的本机覆盖文件（已在 .gitignore 中排除，用于放真实公司资料）
+const LOCAL_CONFIG_FILE = path.join(APP_DIR, "config.local.json");
 const DEFAULT_DATA_DIR_NAME = "Customer Letter Assistant Data";
 
 const DEFAULTS = {
@@ -121,23 +123,33 @@ function migrateLegacyData(dataDir) {
   } catch (e) {}
 }
 
+function readJsonFile(file) {
+  if (!fs.existsSync(file)) return {};
+  return JSON.parse(fs.readFileSync(file, "utf8").replace(/^﻿/, ""));
+}
+
 function loadConfig() {
   let raw = {};
+  let local = {};
   let error = "";
   try {
-    if (fs.existsSync(CONFIG_FILE)) {
-      raw = JSON.parse(fs.readFileSync(CONFIG_FILE, "utf8").replace(/^﻿/, ""));
-    }
+    raw = readJsonFile(CONFIG_FILE);
   } catch (e) {
     error = "config.json 解析失败：" + e.message;
+  }
+  try {
+    local = readJsonFile(LOCAL_CONFIG_FILE);
+  } catch (e) {
+    error = (error ? error + "；" : "") + "config.local.json 解析失败：" + e.message;
   }
 
   const cfg = {
     ...DEFAULTS,
     ...raw,
-    claude: { ...DEFAULTS.claude, ...(raw.claude || {}) },
-    autoAnalyze: { ...DEFAULTS.autoAnalyze, ...(raw.autoAnalyze || {}) },
-    profile: { ...DEFAULTS.profile, ...(raw.profile || {}) },
+    ...local,
+    claude: { ...DEFAULTS.claude, ...(raw.claude || {}), ...(local.claude || {}) },
+    autoAnalyze: { ...DEFAULTS.autoAnalyze, ...(raw.autoAnalyze || {}), ...(local.autoAnalyze || {}) },
+    profile: { ...DEFAULTS.profile, ...(raw.profile || {}), ...(local.profile || {}) },
   };
 
   let dataDir = expandPath(process.env.CMC_DATA_DIR || cfg.dataDir);

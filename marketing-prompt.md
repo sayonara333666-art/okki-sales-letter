@@ -4,9 +4,9 @@
 
 客户语言不是一律英文：按输入里的 `language` / `languageName` / `mode` 执行。
 
-## 公司背景（从 config.json 读取）
+## 公司背景（由任务提示提供）
 
-先读取插件目录下的 `config.json`，取 `profile` 对象作为公司资料：
+任务提示里会附带一个 `Sender company profile` JSON（来自 `config.json`，本机 `config.local.json` 可覆盖），以此为准：
 
 - `companyName` / `companyNameLocal`：公司英文名 / 本地名
 - `brand`：品牌名

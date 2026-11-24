@@ -8,6 +8,9 @@ Customer Letter Assistant Data/
 debug.json
 *.log
 
+# 本机真实配置：公司资料放这里，不提交
+config.local.json
+
 # 公司资料图片：用你自己的，不随仓库提交
 产品目录.png
 产品目录.jpg

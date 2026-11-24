@@ -162,10 +162,10 @@ function callClaude() {
   }
 
   const prompt =
-    `Read marketing-prompt.md, config.json and ${JSON.stringify(tmpWork)}. ` +
+    `Read marketing-prompt.md and ${JSON.stringify(tmpWork)}. ` +
     `Fill ONLY the subject, body, english_subject, english_body, chinese and sources fields ` +
     `for every company in ${JSON.stringify(tmpWork)}, following marketing-prompt.md. ` +
-    `Use profile from config.json as the sender company background. ` +
+    `Sender company profile (authoritative): ${JSON.stringify(cfg.profile)}. ` +
     `Do not change name/country/contact/tags/language/languageName/mode/key/companyId. ` +
     `Do not run any commands. Do not create or edit HTML/JS. When done, reply FILLED <number>.`;
 

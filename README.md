@@ -89,6 +89,19 @@ claude --version
 
    - 营销信里的「我们是谁」和名片都从这个对象读取。
    - 保持示例占位也能跑，只是生成的信会很通用。
+   - **不想让真实公司资料出现在 Git 里？** 新建 `config.local.json` 填同样的 `profile` 即可，它会覆盖 `config.json`，并且已被 `.gitignore` 排除：
+
+   ```json
+   {
+     "profile": {
+       "companyName": "Your Company Name",
+       "companyNameLocal": "你的公司全称",
+       "contactName": "Your Name",
+       "phone": "+00 000 000 0000",
+       "email": "sales@example.com"
+     }
+   }
+   ```
 
 3. **启动本地服务**
 
